@@ -1,16 +1,5 @@
 # login_machine_test
 
-A new Flutter project.
+ I have developed a Flutter application following the Bloc State Management pattern and  Domain-Driven Design (DDD) architecture. The application consists of three screens: a login screen, a home screen, and a sales estimate screen. Additionally, it includes API integration for data retrieval. 
 
-## Getting Started
-
-This project is a starting point for a Flutter application.
-
-A few resources to get you started if this is your first Flutter project:
-
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
-
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+ [![Video](https://img.youtube.com/vi/ykFwptjida4/0.jpg)](https://www.youtube.com/watch?v=ykFwptjida4)

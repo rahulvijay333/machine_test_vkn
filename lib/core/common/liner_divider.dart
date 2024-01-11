@@ -20,7 +20,6 @@ class CustomLinearColorDivider extends StatelessWidget {
   }
 }
 
-
 class CustomLinearDiv extends StatelessWidget {
   const CustomLinearDiv({
     super.key,
@@ -31,11 +30,11 @@ class CustomLinearDiv extends StatelessWidget {
     return const Column(
       children: [
         SizedBox(
-          height: 10,
+          height: 15,
         ),
         CustomLinearColorDivider(),
         SizedBox(
-          height: 10,
+          height: 15,
         ),
       ],
     );

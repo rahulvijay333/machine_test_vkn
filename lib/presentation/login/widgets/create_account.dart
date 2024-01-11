@@ -16,7 +16,7 @@ class CreateAccountOptionContainer extends StatelessWidget {
         ),
         Text(
           'Sign up now!',
-          style: TextStyle(color: Colors.blue,fontWeight: FontWeight.w400),
+          style: TextStyle(color: Colors.blue, fontWeight: FontWeight.w400),
         )
       ],
     );

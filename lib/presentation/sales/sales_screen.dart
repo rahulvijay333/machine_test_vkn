@@ -1,5 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:login_machine_test/application/sales_estimate/sales_estimate_bloc.dart';
 import 'package:login_machine_test/core/common/liner_divider.dart';
 import 'package:login_machine_test/presentation/sales/widgets/sales_estimate_item.dart';
 
@@ -62,14 +64,51 @@ class ScreenSalesEstimate extends StatelessWidget {
             Expanded(
                 child: Container(
               color: Colors.white,
-              child: ListView.separated(
-                  itemBuilder: (context, index) {
-                    return SalesEstimateItem(size: size);
-                  },
-                  separatorBuilder: (context, index) {
-                    return const CustomLinearDiv();
-                  },
-                  itemCount: 5),
+              child: BlocBuilder<SalesEstimateBloc, SalesEstimateState>(
+                builder: (context, state) {
+                  if (state is SalesEstimateLoading) {
+                    return const Center(
+                      child: CircularProgressIndicator(
+                        strokeWidth: 1,
+                      ),
+                    );
+                  } else if (state is SalesEstimatesuccess) {
+                    return ListView.separated(
+                        physics: const BouncingScrollPhysics(),
+                        padding: const EdgeInsets.only(top: 15, bottom: 15),
+                        itemBuilder: (context, index) {
+                          return SalesEstimateItem(
+                              size: size,
+                              customerName:
+                                  state.salesdata!.data![index].customerName!,
+                              invoice: state.salesdata!.data![index].voucherNo!,
+                              invStatus: state.salesdata!.data![index].status!,
+                              totalAmy: state.salesdata!.data![index].grandTotal
+                                  .toString());
+                        },
+                        separatorBuilder: (context, index) {
+                          return const CustomLinearDiv();
+                        },
+                        itemCount: state.salesdata!.data!.length);
+                  } else if (state is SalesEstimatefailed) {
+                    return Center(
+                      child: Column(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: [
+                          const Text('No data'),
+                          IconButton(
+                              onPressed: () {
+                                BlocProvider.of<SalesEstimateBloc>(context)
+                                    .add(GetSalesEstimate());
+                              },
+                              icon: const Icon(Icons.refresh))
+                        ],
+                      ),
+                    );
+                  }
+                  return const SizedBox();
+                },
+              ),
             ))
           ],
         ),

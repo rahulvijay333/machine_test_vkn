@@ -21,8 +21,7 @@ class TrainslateContainer extends StatelessWidget {
             ),
             Text(
               'English',
-              style:
-                  TextStyle(fontSize: 13, fontWeight: FontWeight.w400),
+              style: TextStyle(fontSize: 13, fontWeight: FontWeight.w400),
             )
           ],
         )
